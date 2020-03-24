@@ -6,6 +6,7 @@ import com.yaya.sell.enums.OrderStatusEnum;
 import com.yaya.sell.enums.ResultEnum;
 import com.yaya.sell.exception.SellException;
 import com.yaya.sell.form.OrderForm;
+import com.yaya.sell.service.BuyerService;
 import com.yaya.sell.service.OrderService;
 import com.yaya.sell.utils.ResultUtil;
 import com.yaya.sell.vo.ResultVO;
@@ -34,6 +35,9 @@ public class BuyerOrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private BuyerService buyerService;
 
     /**
      * 创建订单
@@ -87,17 +91,14 @@ public class BuyerOrderController {
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
                                      @RequestParam("orderId") String orderId) {
-        // TODO: 不安全的做法，改进
-        OrderDTO orderDTO = orderService.findOne(orderId);
+        OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
         return ResultUtil.success(orderDTO);
     }
 
     @PostMapping("/cancel")
     public ResultVO<String> cancel(@RequestParam("openid") String openid,
                                    @RequestParam("orderId") String orderId) {
-        // TODO: 不安全的做法，改进
-        OrderDTO orderDTO = orderService.findOne(orderId);
-        orderService.cancel(orderDTO);
+        buyerService.cancelOrder(openid, orderId);
         return ResultUtil.success();
     }
 }
