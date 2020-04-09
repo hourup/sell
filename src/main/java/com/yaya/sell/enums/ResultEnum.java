@@ -23,6 +23,7 @@ public enum ResultEnum implements IResultEnum {
     , PARAM_ERROR(100008, "参数不正确")
     , CART_EMPTY(100009, "购物车不能为空")
     , ORDER_OWNER_ERROR(100010, "订单不属于当前用户")
+    , WECHAT_MP_ERROR(100011, "微信公众账号错误")
     ;
 
     private Integer code;
