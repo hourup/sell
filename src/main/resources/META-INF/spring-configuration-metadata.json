@@ -1,0 +1,19 @@
+{"groups": [
+  {
+    "name": "wechat",
+    "type": "com.yaya.sell.config.WeChatAccountConfig",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  }
+],"properties": [
+  {
+    "name": "wechat.appId",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  },
+  {
+    "name": "wechat.appSecret",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  }
+],"hints": [
+]}
