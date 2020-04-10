@@ -2,7 +2,6 @@ package com.yaya.sell.controller;
 
 import com.yaya.sell.convert.OrderFormConvert;
 import com.yaya.sell.dto.OrderDTO;
-import com.yaya.sell.enums.OrderStatusEnum;
 import com.yaya.sell.enums.ResultEnum;
 import com.yaya.sell.exception.SellException;
 import com.yaya.sell.form.OrderForm;
@@ -10,6 +9,7 @@ import com.yaya.sell.service.BuyerService;
 import com.yaya.sell.service.OrderService;
 import com.yaya.sell.utils.ResultUtil;
 import com.yaya.sell.vo.ResultVO;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +28,7 @@ import java.util.Map;
  * @author changhr2013
  * @date 2020/3/22
  */
+@Api("买家订单相关 API")
 @Slf4j
 @RestController
 @RequestMapping("/buyer/order")
@@ -46,6 +47,10 @@ public class BuyerOrderController {
      * @param bindingResult bindingResult
      * @return Map<String, String>
      */
+    @ApiOperation(value = "创建订单")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "orderForm", value = "表单")
+    })
     @PostMapping("/create")
     public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
