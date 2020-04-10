@@ -1,8 +1,8 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: TencentMysql@2019
+    password: +{cipher}c43db6a163b7d48176255d24c94680931d362db167e0ae3dd1045d1e15ba3de7
     url: jdbc:mysql://139.199.94.62:3306/bootdb?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
@@ -11,11 +11,6 @@ spring:
 server:
   servlet:
     context-path: /sell
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
 wechat:
-  appId: wxccac1f71a22dd43b
-  appSecret: c17da0c6601aa1a21ef706d2270a0054
+  appId: +{cipher}bd8a086bb0baa3d7cb890ad2dacdf8f5225f1eb422fa2dd2fa08e113457aa277
+  appSecret: +{cipher}83a97c85a45cfa45141af81645727ec0e1ab52a5bc2fce388ff61c4ac729aa0c7cb98b130adf904d540a62a6d934bf24
