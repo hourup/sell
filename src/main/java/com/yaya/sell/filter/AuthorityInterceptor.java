@@ -10,10 +10,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @Auther: zhushuaixing
- * @Date: 2020/3/19
- */
 @Slf4j
 @Component
 public class AuthorityInterceptor extends HandlerInterceptorAdapter {

@@ -1,5 +1,7 @@
 package com.yaya.sell.controller;
 
+import com.yaya.sell.enums.ResultEnum;
+import com.yaya.sell.exception.SellException;
 import com.yaya.sell.threadlocal.LocalRequestContext;
 import com.yaya.sell.threadlocal.LocalRequestContextHolder;
 import com.yaya.sell.threadlocal.UserInfo;
@@ -18,7 +20,9 @@ public class HelloController {
 
     @GetMapping("/hello/{id}")
     public String hello(@PathVariable("id") String id) {
-        LocalRequestContext context = LocalRequestContextHolder.getLocalRequestContext();
+        LocalRequestContext context = LocalRequestContextHolder.getLocalRequestContext()
+                .orElseThrow(() -> new SellException(ResultEnum.CART_EMPTY));
+
         UserInfo userInfo = context.getUserInfo();
         System.out.println(userInfo);
         return userInfo.toString();
