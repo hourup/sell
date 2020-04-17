@@ -14,6 +14,26 @@
     "name": "wechat.appSecret",
     "type": "java.lang.String",
     "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  },
+  {
+    "name": "wechat.mchId",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  },
+  {
+    "name": "wechat.mchKey",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  },
+  {
+    "name": "wechat.keyPath",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
+  },
+  {
+    "name": "wechat.notifyUrl",
+    "type": "java.lang.String",
+    "sourceType": "com.yaya.sell.config.WeChatAccountConfig"
   }
 ],"hints": [
 ]}

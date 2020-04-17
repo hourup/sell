@@ -21,7 +21,7 @@ import java.net.URLEncoder;
  */
 @Slf4j
 @Controller
-@RequestMapping("/weixin")
+@RequestMapping("/wechat")
 public class WeChatController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class WeChatController {
 
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
-        String url = "http://changhr.nat100.top/sell/weixin/userInfo";
+        String url = "http://changhr.nat100.top/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl));
         log.info("[微信网页授权]获取 code，result=[{}]", redirectUrl);
         return "redirect:" + redirectUrl;

@@ -14,6 +14,7 @@ import com.yaya.sell.exception.SellException;
 import com.yaya.sell.repository.OrderDetailRepository;
 import com.yaya.sell.repository.OrderMasterRepository;
 import com.yaya.sell.service.OrderService;
+import com.yaya.sell.service.PayService;
 import com.yaya.sell.service.ProductService;
 import com.yaya.sell.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +47,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional
@@ -115,7 +119,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO cancel(OrderDTO orderDTO) {
         // 判断订单状态
         if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())){
-            log.error("[取消订单]订单状态不正确，orderId=[{}],orderStatus=[{}]", orderDTO.getOrderId(), orderDTO.getOrderStatus());
+            log.error("[取消订单] 订单状态不正确，orderId=[{}],orderStatus=[{}]", orderDTO.getOrderId(), orderDTO.getOrderStatus());
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
         // 修改订单状态
@@ -125,7 +129,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 返还库存
         if (CollectionUtils.isEmpty(orderDTO.getOrderDetailList())) {
-            log.error("[取消订单]订单中无订单详情，orderDTO=[{}]", orderDTO);
+            log.error("[取消订单] 订单中无订单详情，orderDTO=[{}]", orderDTO);
             throw new SellException(ResultEnum.ORDER_DETAIL_EMPTY);
         }
         productService.increaseStock(orderDTO.getOrderDetailList().stream()
@@ -133,7 +137,8 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList()));
         // 如果已支付，需要退款
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-            // TODO: 退款
+            // 退款
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

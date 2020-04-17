@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: +{cipher}c43db6a163b7d48176255d24c94680931d362db167e0ae3dd1045d1e15ba3de7
-    url: jdbc:mysql://139.199.94.62:3306/bootdb?characterEncoding=utf-8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://192.168.1.37:3306/bootdb?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
@@ -14,3 +14,7 @@ server:
 wechat:
   appId: +{cipher}bd8a086bb0baa3d7cb890ad2dacdf8f5225f1eb422fa2dd2fa08e113457aa277
   appSecret: +{cipher}83a97c85a45cfa45141af81645727ec0e1ab52a5bc2fce388ff61c4ac729aa0c7cb98b130adf904d540a62a6d934bf24
+  mchId: +{cipher}95148271277c043d45f83a799e9862c6
+  mchKey: +{cipher}d0cb145469609c1339d6fdb639300e78b2e7595a266b42e55bcf8557d82b94387cb98b130adf904d540a62a6d934bf24
+  keyPath: D:/Users/chang/Desktop/sell/src/main/resources/cert/apiclient_cert.p12
+  notifyUrl: http://changhr.nat100.top/sell/pay/notify

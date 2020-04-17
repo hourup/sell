@@ -30,3 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 /src/main/resources/key.json
+/src/main/resources/cert/

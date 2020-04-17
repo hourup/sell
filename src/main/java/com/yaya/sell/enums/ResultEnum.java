@@ -24,6 +24,7 @@ public enum ResultEnum implements IResultEnum {
     , CART_EMPTY(100009, "购物车不能为空")
     , ORDER_OWNER_ERROR(100010, "订单不属于当前用户")
     , WECHAT_MP_ERROR(100011, "微信公众账号错误")
+    , WECHAT_PAY_NOTIFY_MONEY_VERIFY_ERROR(100012, "微信支付异步通知金额校验不通过")
     ;
 
     private Integer code;
