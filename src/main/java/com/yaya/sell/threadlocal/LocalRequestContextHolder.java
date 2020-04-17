@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -51,8 +52,8 @@ public class LocalRequestContextHolder {
      *
      * @return LocalRequestContext
      */
-    public static LocalRequestContext getLocalRequestContext() {
-        return CONTEXT_THREAD_LOCAL.get();
+    public static Optional<LocalRequestContext> getLocalRequestContext() {
+        return Optional.ofNullable(CONTEXT_THREAD_LOCAL.get());
     }
 
     /**
