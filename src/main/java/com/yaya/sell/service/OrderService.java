@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 public interface OrderService {
@@ -27,4 +27,7 @@ public interface OrderService {
 
     /** 支付订单 */
     OrderDTO paid(OrderDTO orderDTO);
+
+    /** 查询订单列表 */
+    Page<OrderDTO> findList(Pageable pageable);
 }

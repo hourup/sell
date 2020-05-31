@@ -1,11 +1,16 @@
 package com.yaya.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yaya.sell.dataobject.OrderDetail;
+import com.yaya.sell.enums.OrderStatusEnum;
+import com.yaya.sell.enums.PayStatusEnum;
 import com.yaya.sell.serializer.Date2LongSerializer;
+import com.yaya.sell.utils.EnumUtil;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.EnumUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Data
@@ -46,4 +51,14 @@ public class OrderDTO {
     private Date updateTime;
 
     private List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(this.orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(this.payStatus, PayStatusEnum.class);
+    }
 }

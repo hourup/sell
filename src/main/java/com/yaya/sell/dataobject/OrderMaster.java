@@ -5,6 +5,7 @@ import com.yaya.sell.enums.PayStatusEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,12 +14,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Data
 @Accessors(chain = true)
 @Entity
+@DynamicInsert
 @DynamicUpdate
 public class OrderMaster {
 

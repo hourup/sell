@@ -1,7 +1,7 @@
 package com.yaya.sell.enums;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 public interface IResultEnum {

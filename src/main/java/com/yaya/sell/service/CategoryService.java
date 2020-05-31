@@ -5,7 +5,7 @@ import com.yaya.sell.dataobject.ProductCategory;
 import java.util.List;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/19
  */
 public interface CategoryService {

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Getter
@@ -25,6 +25,14 @@ public enum ResultEnum implements IResultEnum {
     , ORDER_OWNER_ERROR(100010, "订单不属于当前用户")
     , WECHAT_MP_ERROR(100011, "微信公众账号错误")
     , WECHAT_PAY_NOTIFY_MONEY_VERIFY_ERROR(100012, "微信支付异步通知金额校验不通过")
+    , ORDER_CANCEL_SUCCESS(100012, "订单取消成功")
+    , ORDER_FINISH_SUCCESS(100013, "订单完结成功")
+    , PRODUCT_STATUS_ERROR(100014, "商品状态不正确")
+    , CATEGORY_IS_NOT_EXIST(100015, "商品类目不存在")
+    , ALIPAY_ERROR(100016, "支付宝网页授权服务错误")
+    , LOGIN_FAIL(100017, "登录失败，登录信息不正确")
+    , LOGOUT_SUCCESS(100018, "登出成功")
+    , ORDER_UPDATE_FAIL(100019, "订单完结失败")
     ;
 
     private Integer code;

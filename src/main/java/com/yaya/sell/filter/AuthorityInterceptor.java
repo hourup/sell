@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
-@Component
+//@Component
 public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 
     private ServletContext servletContext;

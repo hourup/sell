@@ -4,8 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/4/9
  */
 @Data
@@ -33,4 +35,6 @@ public class WeChatAccountConfig {
     private String keyPath;
 
     private String notifyUrl;
+
+    private Map<String, String> templateId;
 }

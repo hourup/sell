@@ -19,7 +19,8 @@ import java.sql.DriverManager;
 import java.util.Map;
 
 /**
- * @author changhr2013
+ * 微信支付控制器
+ * @author yaomengya
  * @date 2020/4/11
  */
 @Slf4j

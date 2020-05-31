@@ -3,7 +3,7 @@ package com.yaya.sell.service;
 import com.yaya.sell.dto.OrderDTO;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/24
  */
 public interface BuyerService {

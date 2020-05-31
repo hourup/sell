@@ -7,7 +7,7 @@ import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Mapper

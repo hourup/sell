@@ -3,7 +3,7 @@ package com.yaya.sell.exception;
 import com.yaya.sell.enums.IResultEnum;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 public class SellException extends RuntimeException {

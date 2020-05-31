@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/22
  */
 @ApiModel("创建订单表单")

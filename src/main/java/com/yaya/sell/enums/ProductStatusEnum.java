@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/20
  */
 @Getter
 @AllArgsConstructor
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum<Integer> {
 
     /** 商品状态 */
     UP(0, "在架"),

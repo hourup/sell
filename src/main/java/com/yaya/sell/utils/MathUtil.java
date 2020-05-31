@@ -3,7 +3,7 @@ package com.yaya.sell.utils;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/4/11
  */
 public class MathUtil {

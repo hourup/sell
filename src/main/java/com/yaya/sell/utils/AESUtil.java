@@ -17,7 +17,7 @@ import java.security.Security;
 /**
  * AES 对称加密算法工具类
  *
- * @author changhr
+ * @author yaomengya
  * @create 2019-05-08 9:29
  */
 @SuppressWarnings({"WeakerAccess", "unused", "Duplicates"})
@@ -342,6 +342,7 @@ public abstract class AESUtil {
     }
 
     public static void main(String[] args) {
+
         byte[] key = AESUtil.initKey();
         byte[] data = "Nice to meet you!".getBytes(StandardCharsets.UTF_8);
         byte[] nonce = AESUtil.generateGCMNonce();

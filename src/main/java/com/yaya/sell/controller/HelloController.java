@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author changhr2013
+ * 测试 controller 是否联通
+ * @author yaomengya
  * @date 2020/3/19
  */
 @RestController

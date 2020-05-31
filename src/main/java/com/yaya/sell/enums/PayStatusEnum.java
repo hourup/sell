@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Getter
 @AllArgsConstructor
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum<Integer> {
 
     /** 支付状态 */
     WAIT(0, "等待支付"),

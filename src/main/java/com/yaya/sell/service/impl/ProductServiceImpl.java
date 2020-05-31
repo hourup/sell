@@ -14,9 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/20
  */
 @Service
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductInfo findOne(String productId) {
-        return productRepository.findById(productId).get();
+        return productRepository.findById(productId).orElse(null);
     }
 
     @Override
@@ -74,5 +75,31 @@ public class ProductServiceImpl implements ProductService {
                     productRepository.save(productInfo);
                 }
         );
+    }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+
+        ProductInfo productInfo = productRepository.findById(productId)
+                .orElseThrow(() -> new SellException(ResultEnum.PRODUCT_IS_NOT_EXIST));
+
+        if (productInfo.getProductStatusEnum().equals(ProductStatusEnum.UP)) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+        return productRepository.save(productInfo);
+    }
+
+    @Override
+    public ProductInfo offSale(String productId) {
+
+        ProductInfo productInfo = productRepository.findById(productId)
+                .orElseThrow(() -> new SellException(ResultEnum.PRODUCT_IS_NOT_EXIST));
+
+        if (productInfo.getProductStatusEnum().equals(ProductStatusEnum.DOWN)) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        return productRepository.save(productInfo);
     }
 }

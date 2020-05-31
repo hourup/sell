@@ -1,5 +1,6 @@
 package com.yaya.sell.controller;
 
+import com.yaya.sell.config.ProjectUrlConfig;
 import com.yaya.sell.enums.ResultEnum;
 import com.yaya.sell.exception.SellException;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.net.URLEncoder;
 
 /**
- * @author changhr2013
+ * 微信授权相关
+ * 获取微信用户信息
+ *
+ * @author yaomengya
  * @date 2020/4/9
  */
 @Slf4j
@@ -27,9 +31,12 @@ public class WeChatController {
     @Autowired
     private WxMpService wxMpService;
 
+    @Autowired
+    private ProjectUrlConfig projectUrlConfig;
+
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
-        String url = "http://changhr.nat100.top/sell/wechat/userInfo";
+        String url = projectUrlConfig.getWechatMpAuthorize() + "/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl));
         log.info("[微信网页授权]获取 code，result=[{}]", redirectUrl);
         return "redirect:" + redirectUrl;

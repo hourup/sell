@@ -55,4 +55,16 @@ public class ProductServiceImplTest {
         ProductInfo info = productService.save(productInfo);
         Assert.notNull(info, "不为空");
     }
+
+    @Test
+    void onSale() {
+        ProductInfo productInfo = productService.onSale("123456");
+        Assert.isTrue(productInfo.getProductStatusEnum().equals(ProductStatusEnum.UP), "上架");
+    }
+
+    @Test
+    void offSale() {
+        ProductInfo productInfo = productService.offSale("123456");
+        Assert.isTrue(productInfo.getProductStatusEnum().equals(ProductStatusEnum.DOWN), "下架");
+    }
 }

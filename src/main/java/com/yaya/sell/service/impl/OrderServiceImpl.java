@@ -16,6 +16,7 @@ import com.yaya.sell.repository.OrderMasterRepository;
 import com.yaya.sell.service.OrderService;
 import com.yaya.sell.service.PayService;
 import com.yaya.sell.service.ProductService;
+import com.yaya.sell.service.PushMessageService;
 import com.yaya.sell.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/21
  */
 @Slf4j
@@ -50,6 +51,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private PushMessageService pushMessageService;
 
     @Override
     @Transactional
@@ -156,6 +160,13 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
         OrderMaster orderMaster = OrderMasterConvert.INSTANCE.convert(orderDTO);
         OrderMaster updateResult = orderMasterRepository.save(orderMaster);
+        if(updateResult == null) {
+            log.error("[完结订单] 更新失败，orderMaster={}", orderMaster);
+            throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
+        }
+
+        // 推送微信模板消息
+        pushMessageService.orderStatus(orderDTO);
 
         return orderDTO;
     }
@@ -180,5 +191,11 @@ public class OrderServiceImpl implements OrderService {
         OrderMaster orderMaster = OrderMasterConvert.INSTANCE.convert(orderDTO);
         OrderMaster updateResult = orderMasterRepository.save(orderMaster);
         return orderDTO;
+    }
+
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+        return orderMasterPage.map(OrderMasterConvert.INSTANCE::convert);
     }
 }

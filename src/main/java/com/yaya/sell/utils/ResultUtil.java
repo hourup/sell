@@ -7,7 +7,7 @@ import com.yaya.sell.vo.ResultVO;
 /**
  * 组装返回结果的工具类
  *
- * @author changhr
+ * @author yaomengya
  * @create 2019-04-23 16:09
  */
 public final class ResultUtil {

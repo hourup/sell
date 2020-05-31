@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author changhr2013
+ * 买家商品信息控制器
+ * @author yaomengya
  * @date 2020/3/20
  */
 @RestController

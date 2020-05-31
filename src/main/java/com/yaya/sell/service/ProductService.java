@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 商品 Service 层
- * @author changhr2013
+ * @author yaomengya
  * @date 2020/3/20
  */
 public interface ProductService {
@@ -30,4 +30,14 @@ public interface ProductService {
 
     // 减库存
     void decreaseStock(List<CartDTO> cartDTOList);
+
+    /**
+     * 上架
+     */
+    ProductInfo onSale(String productId);
+
+    /**
+     * 下架
+     */
+    ProductInfo offSale(String productId);
 }

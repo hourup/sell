@@ -82,4 +82,11 @@ class OrderServiceImplTest {
         OrderDTO result = orderService.paid(orderDTO);
         Assert.isTrue(result.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode()), "相等");
     }
+
+    @Test
+    void findAllList() {
+        Page<OrderDTO> orderDTOPage = orderService.findList(PageRequest.of(0, 5));
+        orderDTOPage.getContent().forEach(System.out::println);
+        Assert.notEmpty(orderDTOPage.getContent(), "非空");
+    }
 }
